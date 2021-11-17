@@ -1,4 +1,5 @@
 ﻿using System;
+using Software.Core;
 
 namespace Software.Core
 {
