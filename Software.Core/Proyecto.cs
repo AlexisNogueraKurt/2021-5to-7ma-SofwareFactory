@@ -14,6 +14,10 @@ namespace Software.Core
         public decimal presupuesto { get; set; }
         public DateTime inicio { get; set; }
         public DateTime fin { get; set; }
+        public Proyecto ()
+        {
+            List<Requerimiento> requerimientos = new List<Requerimiento>();
+        }
 
     }
 }

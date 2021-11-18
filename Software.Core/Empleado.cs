@@ -12,14 +12,7 @@ namespace Software.Core
         public string nombre { get; set; }
         public string apellido { get; set; }
         public DateTime contratacion { get; set; }
-
-
-
-
-
-
-
-
+        
 
     }
 }

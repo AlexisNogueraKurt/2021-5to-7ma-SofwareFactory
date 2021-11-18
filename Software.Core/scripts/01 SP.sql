@@ -18,10 +18,10 @@ BEGIN
                   VALUES (unidProyecto, unCuit, unaDescripcion, unPresupuesto, unInicio, unFin);
 END $$
 DELIMITER $$
-CREATE PROCEDURE altaRequerimiento (unRequerimiento INT, unidProyecto SMALLINT, unidTecnologia TINYINT, unaDescripcion VARCHAR(45), unaComplejidad TINYINT)
+CREATE PROCEDURE altaRequerimiento (unidRequerimiento INT, unidProyecto SMALLINT, unidTecnologia TINYINT, unaDescripcion VARCHAR(45), unaComplejidad TINYINT)
 BEGIN 
-     INSERT INTO Requerimiento (Requerimiento, idProyecto, idTecnologia, Descripcion, Complejidad)
-                 VALUES (unRequerimiento, unidproyecto, unidTecnologia, unaDescripcion, unaComplejidad);
+     INSERT INTO Requerimiento (idRequerimiento, idProyecto, idTecnologia, Descripcion, Complejidad)
+                 VALUES (unidRequerimiento, unidproyecto, unidTecnologia, unaDescripcion, unaComplejidad);
 END $$
 DELIMITER $$
 CREATE PROCEDURE altaTarea (unidRequerimiento INT, unCuil INT, unInicio DATE, unFin DATE)
@@ -30,10 +30,10 @@ BEGIN
 				VALUES (unRequeriemiento, unCuil, unInicio, unFin);
 END $$
 DELIMITER $$
-CREATE PROCEDURE altaTecnologia ( unidTecnologia TINYINT, unaTecnologia VARCHAR(20), unCostoBase DECIMAL(10,2))
+CREATE PROCEDURE altaTecnologia (unidTecnologia TINYINT, unaTecnologia VARCHAR(20), unCostoBase DECIMAL(10,2))
 BEGIN
-     INSERT INTO Tecnologia ( idTecnologia, tecnolgia, costoBase)
-                 VALUES ( unidTecnologia, unaTecnologia, unCostoBase);
+     INSERT INTO Tecnologia (idTecnologia, tecnolgia, costoBase)
+                 VALUES (unidTecnologia, unaTecnologia, unCostoBase);
 END $$
 /*Realizar el SP asignarExperiencia que recibe como parámetros cuil, idTecnologia y una calificación. El SP tiene que crear un registro en caso de que no exista o actualizarlo en caso de que si exista.*/
 DELIMITER $$
@@ -60,6 +60,7 @@ BEGIN
       UPDATE Tarea
       SET fin = unfin 
       WHERE idRequerimiento = unidRequerimiento
+      AND cuil = uncuil
       AND fin is null;
 END $$
 
@@ -79,12 +80,12 @@ END $$
 /*Realizar la SF sueldoMensual que en base a un cuil devuelva el sueldo a pagar (DECIMAL (10,2))para el mes en curso.
 SUELDO MENSUAL = Antigüedad en años * 1000 + SUMATORIA de (calificación de la exp. * costo base de la tecnología).*/
 DELIMITER $$
-CREATE FUNCTION sueldoMensaul (uncuil INT)
+CREATE FUNCTION sueldoMensual (uncuil INT)
 			    RETURNS DECIMAL(10,2)
 BEGIN 
       DECLARE Resultado DECIMAL (10,2);
       
-      SELECT TIMESTAMPDIFF(YEAR,Contratacion,CURDATE() * 1000) + SUM(calificacion * costoBase) INTO Resultado
+      SELECT TIMESTAMPDIFF(YEAR,Contratacion,CURDATE()) * 100 + SUM(calificacion * costoBase) INTO Resultado
       FROM Experiencia E
       INNER JOIN Tecnologia T ON T.idTecnologia = E.idTecnologia
       INNER JOIN Empleado Ep ON E.cuil = Ep.cuil
