@@ -1,3 +1,4 @@
+SELECT 'Creando Inserts' AS 'Estado';
 START TRANSACTION;
 
     INSERT INTO Cliente (cuit, razonSocial)

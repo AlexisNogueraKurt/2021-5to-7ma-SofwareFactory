@@ -10,14 +10,13 @@ namespace Software.Core
     {
         public int id { get; set; }
         public Empleado empleado { get; set; }
-        public string descripcion { get; set; }
-        public decimal presupuesto { get; set; }
-        public DateTime inicio { get; set; }
-        public DateTime fin { get; set; }
-        public Proyecto ()
-        {
-            List<Requerimiento> requerimientos = new List<Requerimiento>();
-        }
+        public string Descripcion { get; set; }
+        public decimal Presupuesto { get; set; }
+        public DateTime Inicio { get; set; }
+        public DateTime Fin { get; set; }
+        public Proyecto (){List<Requerimiento> requerimientos = new List<Requerimiento>();}
+        public Proyecto (string descripcion) => descripcion = Descripcion;
+        public Proyecto (DateTime incio) => incio = Inicio;
 
     }
 }

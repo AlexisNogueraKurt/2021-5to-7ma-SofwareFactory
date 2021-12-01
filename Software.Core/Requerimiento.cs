@@ -9,11 +9,15 @@ namespace Software.Core
     public class Requerimiento
     {
 
-        public int id { get; set; }
+        public int Id { get; set; }
         public Proyecto proyecto { get; set; }
         public Tecnologia tecnologia { get; set; }
-        public string descripcion { get; set; }
-        public int complejidad { get; set; }
+        public string Descripcion { get; set; }
+        public int Complejidad { get; set; }
+        public Requerimiento(){}
+        public Requerimiento (string descripcion) => descripcion = Descripcion;
+        public Requerimiento (int complejidad) => complejidad = Complejidad;
+
 
 
     }

@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Software.Core
 {
-    interface IAdo
+    public interface IAdo
     {
         void AltaCliente(Cliente cliente);
         List<Cliente> ObtenerClientes();
+        
     }
 }

@@ -1,6 +1,7 @@
 DROP DATABASE IF EXISTS SoftwareFactory;
 CREATE DATABASE SoftwareFactory;
 USE SoftwareFactory;
+SELECT 'Creando Tablas' AS 'Estado';
 
 CREATE TABLE Cliente(
 	cuit INT NOT NULL,

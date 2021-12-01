@@ -10,8 +10,8 @@ namespace Software.Core
     {
         public int id { get; set; }
         public string tecnologia { get; set; }
-        public decimal costoBase { get; set; }
-
-
+        public decimal CostoBase { get; set; }
+        public Tecnologia(){}
+        public Tecnologia(decimal costoBase) => costoBase = CostoBase;
     }
 }

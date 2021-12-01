@@ -10,8 +10,10 @@ namespace Software.Core
     {
         public Requerimiento requerimiento { get; set; }
         public Empleado empleado { get; set; }
-        public DateTime inicio { get; set; }
-        public DateTime fin { get; set; }
+        public DateTime Inicio { get; set; }
+        public DateTime Fin { get; set; }
+        public Tarea(){}
+        public Tarea(DateTime inicio, DateTime fin) => inicio = Inicio;
 
     }
 }

@@ -1,8 +1,9 @@
 /*Realizar los SP para dar de alta todas las tablas, menos la tabla Experiencia.*/
 DELIMITER $$
+SELECT 'Creando SP' AS 'Estado'$$
 CREATE PROCEDURE altaCliente (unCuit INT, unaRazonSocial VARCHAR(45))
 BEGIN
-       INSERT INTO Cliente (cuit, razonSocail)
+       INSERT INTO Cliente (cuit, razonSocial)
                    VALUES (unCuit, unaRazonSocial);
 END $$
 DELIMITER $$
@@ -67,7 +68,7 @@ END $$
 /*Realizar la SF complejidadPromedio que reciba como parámetro un idProyecto y devuelva un float representando el promedio de  complejidad de los requerimientos para el Proyecto pasado por parámetro.*/
 DELIMITER $$
 CREATE FUNCTION complejidadPromedio (unidProyecto SMALLINT)
-                                     RETURNS FLOAT
+                                     RETURNS FLOAT READS SQL DATA 
 BEGIN
      DECLARE Resultado FLOAT;
      
@@ -81,7 +82,7 @@ END $$
 SUELDO MENSUAL = Antigüedad en años * 1000 + SUMATORIA de (calificación de la exp. * costo base de la tecnología).*/
 DELIMITER $$
 CREATE FUNCTION sueldoMensual (uncuil INT)
-			    RETURNS DECIMAL(10,2)
+			    RETURNS DECIMAL(10,2) READS  SQL DATA
 BEGIN 
       DECLARE Resultado DECIMAL (10,2);
       
@@ -97,7 +98,7 @@ END$$
 COSTO PROYECTO = SUMATORIA (complejidad del requerimiento * costo base de la tecnología del Requerimiento).*/
 DELIMITER $$
 CREATE FUNCTION costoProyecto (unidProyecto SMALLINT)
-                               RETURNS DECIMAL(10,2)
+                               RETURNS DECIMAL(10,2) READS SQL DATA
 BEGIN
      DECLARE Resultado DECIMAL (10,2);
      

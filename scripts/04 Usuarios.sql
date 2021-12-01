@@ -1,4 +1,5 @@
 /*Administrador: puede ver todo desde cualquier lado, dar de alta Proyectos, Tecnologías, Clientes y Empleados. También puede actualizar todo respecto a la tabla Proyecto.*/
+SELECT 'Creando Usuarios' AS 'Estado';
 DROP USER IF EXISTS 'Administrador'@'%';
 CREATE USER IF NOT EXISTS 'Administrador'@'%' IDENTIFIED BY 'passAdministrado';
 GRANT SELECT ON softwarefactory.* TO 'Administrador'@'%';

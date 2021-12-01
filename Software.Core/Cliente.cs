@@ -8,8 +8,13 @@ namespace Software.Core
 {
     public class Cliente
     {
-        public int cuit { get; set; }
-        public string razonSocial { get; set; }
+        public int Cuit { get; set; }
+        public string RazonSocial { get; set; }
+        public Cliente(){}
+
+        public Cliente(string razonSocial) => razonSocial = RazonSocial;
+        public Cliente(int cuit) => cuit = Cuit;
+        
 
 
     }
